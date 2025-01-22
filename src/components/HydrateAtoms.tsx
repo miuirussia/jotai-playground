@@ -20,18 +20,19 @@ const localStoragePersister = createSyncStoragePersister({
   key: "jotai-playground",
   storage: window.localStorage,
   serialize: data => compress(JSON.stringify(data)),
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   deserialize: data => JSON.parse(decompress(data)),
 });
 
-persistQueryClient({
+void persistQueryClient({
   queryClient,
   buster: 'jotai-playground-v1',
   persister: localStoragePersister,
 })
 
-export const HydrateAtoms: React.FC<{ children: React.ReactNode }> = ({
+export const HydrateAtoms = ({
   children,
-}) => {
+}: { children: React.ReactNode }) => {
   useHydrateAtoms([[queryClientAtom, queryClient]]);
 
   return (
