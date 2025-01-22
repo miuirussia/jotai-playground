@@ -1,0 +1,15 @@
+.main {
+  background: red;
+}
+
+.card {
+  background: green;
+}
+
+.pre {
+  white-space: pre;
+}
+
+.readTheDocs {
+  background: teal;
+}
